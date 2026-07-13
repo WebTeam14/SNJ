@@ -18,22 +18,22 @@ const institutions = [
   {
     name: "ISKCON Navi Mumbai",
     role: "Spiritual Home & Host",
-    desc: "A spiritual home of bhakti and community — anchoring the SNJ programme in compassion, dharma and service. The temple campus has housed healing gatherings for decades.",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   },
   {
-    name: "BVCE / BCVE",
-    role: "Value Education & Human Development",
-    desc: "Delivers the human quotient framework (Body-Mind-Intelligence-Soul) through psychological rehabilitation, emotional resilience, and lifestyle transformation.",
+    name: "Bhaktivedanta College of Vedic Education (BVCE)",
+    //role: "Value Education & Human Development",
+    desc: "Ministry of Education recognised degree-granting institution. 3,500+ students trained. 2 PhDs in Bhagavad-Gita research. The academic foundation for all that follows.",
   },
   {
     name: "BAHRC",
-    role: "Research & Retreat Infrastructure",
-    desc: "Bhakti Vedanta Ashram & Holistic Research Centre — the research and retreat infrastructure that supports SNJ field work. BAHRC measures outcomes and maintains protocols.",
+    //role: "Research & Retreat Infrastructure",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   },
   {
     name: "Swaayu Cancer Care Centre",
-    role: "Integrative Ayurvedic Partner",
-    desc: "Clinical Ayurveda partner — integrating evidence-based ayurvedic care with the modern integrative oncology framework.",
+    //role: "Integrative Ayurvedic Partner",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   },
 ];
 
@@ -126,14 +126,25 @@ function About() {
           </div>
 
           <p className="text-xl leading-10 text-white/90">
-            To systematically advance the science of holistic healing to society
-            at large, and educate every individual in the integrated wisdom of
-            <span className="text-amber-300 font-semibold">
-              {" "}Body, Mind, Intelligence and Consciousness
-            </span>,
-            addressing the root imbalance behind disease while inspiring
-            lasting wellness, resilience and compassionate living across the world.
-          </p>
+  To systematically advance the science of holistic healing to society at
+  large, and educate all people in the integrated wisdom of
+  <span className="text-amber-300 font-semibold">
+    {" "}Body, Mind, Intelligence and Consciousness
+  </span>
+  , in order to address the root imbalance underlying human disease and
+  achieve real and lasting wellness in the world.
+  <br />
+  <br />
+  <span className="text-amber-300 font-semibold">
+    HCHR — the Holistic Cancer Healing Retreat
+  </span>{" "}
+  is our flagship expression of this mission: a structured,
+  non-pharmacological, AYUSH-rooted programme aligned with NCCN, ASCO,
+  ESMO, and SIO guidelines. We serve cancer patients, caregivers, and
+  survivors completely free of charge through India's temple
+  infrastructure, delivering a holistic healing model with zero side
+  effects and universal accessibility.
+</p>
 
         </div>
 
@@ -190,15 +201,30 @@ function About() {
 
           </div>
 
-          <p className="text-xl leading-10 text-white/90">
-            To become the world's leading organisation for holistic healing,
-            transforming the lives of
-            <span className="text-amber-300 font-semibold">
-              {" "}cancer patients, caregivers, families and survivors
-            </span>
-            through a comprehensive model of scientific care, Ayurveda,
-            emotional resilience, spiritual wellbeing and lifelong wellness.
-          </p>
+        <p className="text-xl leading-10 text-white/90">
+  To become the world's leading organisation for
+  <span className="text-amber-300 font-semibold">
+    {" "}holistic healing for cancer patients, caregivers, families, and survivors
+  </span>
+  — transforming every journey through cancer into a path of renewed health
+  and happiness, deep rejuvenation, resilience, and lifelong wellness.
+  <br />
+  <br />
+  We envision <span className="text-amber-300 font-semibold">Swastha NavJeevan</span> as
+  the world's gold standard in holistic cancer care—clinically validated
+  through a Phase III Randomized Controlled Trial (RCT) with
+  <span className="text-amber-300 font-semibold">
+    {" "}ACTREC–Tata Memorial Centre
+  </span>
+  , adopted across 600+ ISKCON centres in 70 countries, integrated into
+  India's National Cancer Grid, and ultimately recognised by the World
+  Health Organization (WHO) as a global cancer survivorship framework. A model that proves: healing must be complete, or it is not healing.
+  <br />
+  <br />
+  {/* <span className="italic text-amber-200">
+    "Healing must be complete, or it is not healing."
+  </span> */}
+</p>  
 
         </div>
 
@@ -245,11 +271,11 @@ function About() {
         <div className="container-wide max-w-3xl">
           <SectionTitle
             eyebrow="The Origin Story"
-            title="It began with one listening."
-            lead="A clinician, a monk, an oncologist and a teacher sat together with families navigating cancer. They listened beyond the protocols — to fear, to faith, to the small wishes of ordinary life."
+            title="Lorem ipsum"
+            lead="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
           />
           <p className="mt-8 text-lg text-muted-foreground">
-            The Holistic Cancer Healing Retreat is the answer they have been shaping ever since — slowly, carefully, with four institutions choosing to walk the same ground, in the same direction, without hurry.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </p>
         </div>
       </Section>
