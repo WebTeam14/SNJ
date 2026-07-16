@@ -10,10 +10,15 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ScienceRouteImport } from './routes/science'
+import { Route as ResearchRouteImport } from './routes/research'
 import { Route as ProgrammeRouteImport } from './routes/programme'
+import { Route as PeopleRouteImport } from './routes/people'
 import { Route as GetInvolvedRouteImport } from './routes/get-involved'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as EvidenceRouteImport } from './routes/evidence'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ChallengeRouteImport } from './routes/challenge'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -22,9 +27,24 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ScienceRoute = ScienceRouteImport.update({
+  id: '/science',
+  path: '/science',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResearchRoute = ResearchRouteImport.update({
+  id: '/research',
+  path: '/research',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProgrammeRoute = ProgrammeRouteImport.update({
   id: '/programme',
   path: '/programme',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PeopleRoute = PeopleRouteImport.update({
+  id: '/people',
+  path: '/people',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GetInvolvedRoute = GetInvolvedRouteImport.update({
@@ -42,6 +62,16 @@ const EvidenceRoute = EvidenceRouteImport.update({
   path: '/evidence',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChallengeRoute = ChallengeRouteImport.update({
+  id: '/challenge',
+  path: '/challenge',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -56,29 +86,44 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/challenge': typeof ChallengeRoute
+  '/contact': typeof ContactRoute
   '/evidence': typeof EvidenceRoute
   '/gallery': typeof GalleryRoute
   '/get-involved': typeof GetInvolvedRoute
+  '/people': typeof PeopleRoute
   '/programme': typeof ProgrammeRoute
+  '/research': typeof ResearchRoute
+  '/science': typeof ScienceRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/challenge': typeof ChallengeRoute
+  '/contact': typeof ContactRoute
   '/evidence': typeof EvidenceRoute
   '/gallery': typeof GalleryRoute
   '/get-involved': typeof GetInvolvedRoute
+  '/people': typeof PeopleRoute
   '/programme': typeof ProgrammeRoute
+  '/research': typeof ResearchRoute
+  '/science': typeof ScienceRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/challenge': typeof ChallengeRoute
+  '/contact': typeof ContactRoute
   '/evidence': typeof EvidenceRoute
   '/gallery': typeof GalleryRoute
   '/get-involved': typeof GetInvolvedRoute
+  '/people': typeof PeopleRoute
   '/programme': typeof ProgrammeRoute
+  '/research': typeof ResearchRoute
+  '/science': typeof ScienceRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRouteTypes {
@@ -86,38 +131,58 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/challenge'
+    | '/contact'
     | '/evidence'
     | '/gallery'
     | '/get-involved'
+    | '/people'
     | '/programme'
+    | '/research'
+    | '/science'
     | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/challenge'
+    | '/contact'
     | '/evidence'
     | '/gallery'
     | '/get-involved'
+    | '/people'
     | '/programme'
+    | '/research'
+    | '/science'
     | '/sitemap.xml'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/challenge'
+    | '/contact'
     | '/evidence'
     | '/gallery'
     | '/get-involved'
+    | '/people'
     | '/programme'
+    | '/research'
+    | '/science'
     | '/sitemap.xml'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  ChallengeRoute: typeof ChallengeRoute
+  ContactRoute: typeof ContactRoute
   EvidenceRoute: typeof EvidenceRoute
   GalleryRoute: typeof GalleryRoute
   GetInvolvedRoute: typeof GetInvolvedRoute
+  PeopleRoute: typeof PeopleRoute
   ProgrammeRoute: typeof ProgrammeRoute
+  ResearchRoute: typeof ResearchRoute
+  ScienceRoute: typeof ScienceRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
@@ -130,11 +195,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/science': {
+      id: '/science'
+      path: '/science'
+      fullPath: '/science'
+      preLoaderRoute: typeof ScienceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/research': {
+      id: '/research'
+      path: '/research'
+      fullPath: '/research'
+      preLoaderRoute: typeof ResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/programme': {
       id: '/programme'
       path: '/programme'
       fullPath: '/programme'
       preLoaderRoute: typeof ProgrammeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/people': {
+      id: '/people'
+      path: '/people'
+      fullPath: '/people'
+      preLoaderRoute: typeof PeopleRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/get-involved': {
@@ -158,6 +244,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EvidenceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/challenge': {
+      id: '/challenge'
+      path: '/challenge'
+      fullPath: '/challenge'
+      preLoaderRoute: typeof ChallengeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -178,10 +278,15 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  ChallengeRoute: ChallengeRoute,
+  ContactRoute: ContactRoute,
   EvidenceRoute: EvidenceRoute,
   GalleryRoute: GalleryRoute,
   GetInvolvedRoute: GetInvolvedRoute,
+  PeopleRoute: PeopleRoute,
   ProgrammeRoute: ProgrammeRoute,
+  ResearchRoute: ResearchRoute,
+  ScienceRoute: ScienceRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport

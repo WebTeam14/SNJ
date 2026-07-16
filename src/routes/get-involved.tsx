@@ -3,9 +3,9 @@ import { useState } from "react";
 import { PageHero } from "@/components/site/PageHero";
 import { Section, SectionTitle } from "@/components/site/Section";
 import ctaLamp from "@/assets/cta-lamp.jpg";
-import { HeartHandshake, FlaskConical, HandCoins, Mail, Phone, MapPin } from "lucide-react";
+import { HeartHandshake, Users, HandCoins, FlaskConical, Mail, Phone, MapPin } from "lucide-react";
 
-type Audience = "patients" | "partners" | "research";
+type Audience = "patients" | "volunteers" | "partners";
 
 const panels: Record<Audience, {
   icon: typeof HeartHandshake;
@@ -17,41 +17,41 @@ const panels: Record<Audience, {
   patients: {
     icon: HeartHandshake,
     title: "For Patients & Families",
-    lead: "The programme is fully free, residential and open to every cancer patient — irrespective of religion, caste, gender or income. A short conversation is all it takes to begin.",
+    lead: "The programme is fully free, residential and open to every cancer patient — irrespective of religion, caste, gender or income.",
     bullets: [
       "Fully funded — accommodation, meals, therapies, follow-up",
       "Single residential week, small cohorts",
       "Family accommodation available for one caregiver",
-      "Non-pharmacological — safe alongside chemotherapy, radiation and surgery",
+      "Safe alongside chemotherapy, radiation and surgery",
       "Continuing peer support after you return home",
     ],
     cta: "Request a call from our care team",
   },
+  volunteers: {
+    icon: Users,
+    title: "Volunteer or Facilitate",
+    lead: "Join our growing community of facilitators, yoga teachers, counsellors and volunteers who help make healing possible.",
+    bullets: [
+      "Trained facilitators for yoga, meditation & art therapy",
+      "Volunteer coordinators for daily operations",
+      "Storytellers, musicians and community builders",
+      "Background check and orientation required",
+      "Flexible commitment — from one retreat to ongoing",
+    ],
+    cta: "Apply to volunteer",
+  },
   partners: {
     icon: HandCoins,
-    title: "For CSR & Philanthropic Partners",
-    lead: "Fully CSR-eligible under Schedule VII (health) of the Companies Act. Every rupee funds free care — with transparent outcome reporting cohort-by-cohort.",
+    title: "Donate, Partner or Collaborate",
+    lead: "CSR-eligible under Schedule VII. NGOs, corporates and individuals can support free care, research or infrastructure.",
     bullets: [
       "CSR Schedule VII (i) — promoting health care",
       "Named cohort sponsorship and co-branding options",
-      "Impact dashboard: patients served, QoL deltas, retention",
-      "Site visits, cohort observation and outcome audits welcome",
+      "NGO partnership for outreach and follow-up",
+      "Infrastructure & equipment sponsorship",
       "Multi-year partnership tiers available",
     ],
     cta: "Request the partnership deck",
-  },
-  research: {
-    icon: FlaskConical,
-    title: "For Clinicians & Researchers",
-    lead: "Swastha NavJeevan is a living clinical research programme. We welcome oncologists, integrative practitioners and academic collaborators.",
-    bullets: [
-      "ACTREC–Tata Memorial Centre collaboration",
-      "IRB-reviewed protocols · consented outcome data",
-      "Standardised PROs (FACT-G, MDASI, HADS)",
-      "Biomarker sub-study (cortisol, NK-cell activity)",
-      "Open-access publications and open-source protocol",
-    ],
-    cta: "Request the scientific framework",
   },
 };
 
@@ -59,17 +59,10 @@ export const Route = createFileRoute("/get-involved")({
   head: () => ({
     meta: [
       { title: "Get Involved — Swastha NavJeevan" },
-      {
-        name: "description",
-        content:
-          "Whether you are a patient, a partner or a researcher — start a conversation with the Swastha NavJeevan team. The programme is free and open to all.",
-      },
+      { name: "description", content: "Patients, volunteers, donors and partners — start a conversation with the Swastha NavJeevan team." },
       { property: "og:title", content: "Get Involved — Swastha NavJeevan" },
-      { property: "og:description", content: "Book a free consultation, partner with us, or join the research programme." },
       { property: "og:image", content: ctaLamp },
-      { property: "og:url", content: "/get-involved" },
     ],
-    links: [{ rel: "canonical", href: "/get-involved" }],
   }),
   component: GetInvolved,
 });
@@ -89,7 +82,7 @@ function GetInvolved() {
       <PageHero
         eyebrow="Get Involved"
         title="Start a conversation. <br/><span class='gold-underline'>We'll take it from here.</span>"
-        lead="One programme, three ways to engage — as a patient, a partner or a researcher. Every path starts with a simple, no-obligation conversation."
+        lead="Whether you are a patient, caregiver, volunteer, donor, or partner — your journey with us begins with one conversation."
         image={ctaLamp}
         imageAlt="Two hands cradling a lit candle among white flower petals"
       />
@@ -100,7 +93,6 @@ function GetInvolved() {
             {(Object.keys(panels) as Audience[]).map((k) => (
               <button
                 key={k}
-                type="button"
                 onClick={() => setTab(k)}
                 className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all ${
                   tab === k
@@ -108,7 +100,7 @@ function GetInvolved() {
                     : "text-muted-foreground hover:text-[var(--color-navy)]"
                 }`}
               >
-                {panels[k].title.replace("For ", "")}
+                {k === "patients" ? "Patients" : k === "volunteers" ? "Volunteers" : "Partners"}
               </button>
             ))}
           </div>
@@ -134,8 +126,7 @@ function GetInvolved() {
               <h3 className="display-serif text-2xl text-[var(--color-navy)] mt-1">No forms. No fees. No obligation.</h3>
               {submitted ? (
                 <div className="mt-6 rounded-xl bg-[var(--color-teal)]/10 border border-[var(--color-teal)]/30 p-5 text-sm text-[var(--color-teal)]">
-                  Thank you. A member of our team will be in touch within 24 hours. If it is urgent,
-                  please call the patient support line below.
+                  Thank you. A member of our team will be in touch within 24 hours.
                 </div>
               ) : (
                 <div className="mt-5 grid gap-3">
@@ -158,9 +149,6 @@ function GetInvolved() {
                     <textarea rows={4} className="rounded-lg border border-input bg-white px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-[var(--color-gold)]" />
                   </label>
                   <button type="submit" className="btn-gold btn-gold-hover justify-center mt-2">Send</button>
-                  <p className="text-[11px] text-muted-foreground text-center">
-                    Your details are used only to contact you about Swastha NavJeevan. Never shared.
-                  </p>
                 </div>
               )}
             </form>
@@ -169,11 +157,11 @@ function GetInvolved() {
       </Section>
 
       <Section tone="gradient-navy">
-        <div className="container-wide grid md:grid-cols-3 gap-6 relative z-10">
+        <div className="container-wide grid md:grid-cols-3 gap-6">
           {[
             { icon: Mail, title: "Email", val: "care@swasthanavjeevan.org", href: "mailto:care@swasthanavjeevan.org" },
-            { icon: Phone, title: "Patient support", val: "+91 22 0000 0000", href: "tel:+912200000000" },
-            { icon: MapPin, title: "Visit", val: "BAHRC, ISKCON Navi Mumbai, Kharghar", href: "https://maps.google.com/?q=ISKCON+Navi+Mumbai" },
+            { icon: Phone, title: "Patient Support", val: "+91 22 0000 0000", href: "tel:+912200000000" },
+            { icon: MapPin, title: "Visit Us", val: "BAHRC, ISKCON Navi Mumbai, Kharghar", href: "https://maps.google.com/?q=ISKCON+Navi+Mumbai" },
           ].map(({ icon: I, title, val, href }) => (
             <a key={title} href={href} className="group rounded-2xl bg-white/5 border border-white/10 p-6 backdrop-blur-sm hover:bg-white/10 transition-colors">
               <div className="w-12 h-12 rounded-xl bg-[var(--color-gold)]/20 text-[var(--color-gold-bright)] flex items-center justify-center">

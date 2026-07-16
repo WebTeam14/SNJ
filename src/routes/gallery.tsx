@@ -2,140 +2,159 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { PageHero } from "@/components/site/PageHero";
 import { Section, SectionTitle } from "@/components/site/Section";
-import heroImg from "@/assets/hero-temple-dawn.jpg";
-import img1 from "@/assets/dim-body.jpg";
-import img2 from "@/assets/dim-mind.jpg";
-import img3 from "@/assets/dim-intelligence.jpg";
-import img4 from "@/assets/dim-soul.jpg";
-import img5 from "@/assets/facility-retreat.jpg";
-import img6 from "@/assets/about-science-wisdom.jpg";
-import img7 from "@/assets/cta-lamp.jpg";
-import { X } from "lucide-react";
+import { X, Download, Play, ExternalLink } from "lucide-react";
 
-const photos = [
-  { src: heroImg, title: "Sanctuary at Dawn", caption: "The retreat setting at BAHRC, ISKCON Navi Mumbai — sunrise over the sanctuary." },
-  { src: img1, title: "Movement Session", caption: "Adaptive yoga cohort — Body dimension. Fatigue, pain and inflammation eased through breath and gentle motion." },
-  { src: img2, title: "Mindfulness Practice", caption: "Guided meditation and MBSR — Mind dimension. Cortisol falls, NK-cell activity rises." },
-  { src: img3, title: "Contemplative Study", caption: "Journalling and philosophical inquiry — Intelligence dimension. Meaning-making as medicine." },
-  { src: img4, title: "Community Vigil", caption: "Candlelit community circle — Soul dimension. Non-denominational, open to every faith." },
-  { src: img5, title: "Retreat Pavilion", caption: "Marble pavilion by the lily pond — a quiet space for solitude between sessions." },
-  { src: img6, title: "Science Meets Wisdom", caption: "The programme sits at the intersection of modern oncology and ancient healing arts." },
-  { src: img7, title: "A Single Flame", caption: "The gesture of care — one hand, one flame, one patient at a time." },
+// Sample assets
+import heroImg from "@/assets/hero-temple-dawn.jpg";
+import sampleAvatar from "@/assets/people/dr-sura-das.jpg";
+
+const mediaItems = [
+  { type: "photo", src: sampleAvatar, title: "Inaugural Lamp Lighting", caption: "Dr. Sura Das lights the lamp at the first HCHR retreat, May 30 2026", date: "30 May 2026" },
+  { type: "photo", src: sampleAvatar, title: "Adaptive Yoga Session", caption: "Gentle movement practice for cancer patients", date: "31 May 2026" },
+  { type: "video", src: "#", title: "Patient Story — Mrs. Meena Sharma", caption: "How HCHR helped during chemotherapy", date: "2 June 2026" },
 ];
 
-const events = [
-  { date: "30 May 2026", title: "Inaugural HCHR Retreat", desc: "200+ cancer patients, inaugurated by the Governor of Maharashtra." },
-  { date: "Sept 2026", title: "Cohort II — Residential Week", desc: "Second cohort. Applications open. Nutritionist-led menus and expanded art therapy studio." },
-  { date: "Q4 2026", title: "AYUSH National Conference", desc: "BAHRC clinical team presenting integrative oncology outcomes." },
-  { date: "2027", title: "ACTREC–TMC Study Kick-off", desc: "Phase I observational study begins in partnership with Tata Memorial Centre." },
+const pressCoverage = [
+  { title: "Times of India", date: "1 June 2026", desc: "ISKCON Navi Mumbai launches free integrative cancer healing programme", link: "#" },
+  { title: "Maharashtra Times", date: "3 June 2026", desc: "HCHR: Where ancient wisdom meets modern oncology", link: "#" },
+];
+
+const testimonials = [
+  {
+    name: "Mrs. Meena Sharma",
+    role: "Breast Cancer Survivor, Cohort 1",
+    text: "I came with fear and left with peace. The combination of medical guidance, meditation, and community support gave me strength I never knew I had.",
+    date: "June 2026"
+  },
+  {
+    name: "Mr. Rajesh Patel",
+    role: "Lung Cancer Patient",
+    text: "The doctors at ACTREC-TMC are guiding us medically, but the soul-level healing at HCHR is what truly helped my family and me cope.",
+    date: "June 2026"
+  },
+];
+
+const resources = [
+  { title: "HCHR Programme Brochure 2026", file: "/brochures/hchr-brochure-2026.pdf", size: "2.4 MB" },
+  { title: "Integrative Oncology Evidence Summary", file: "/brochures/integrative-oncology-evidence.pdf", size: "1.8 MB" },
+  { title: "Patient Journey & Expectations Guide", file: "/brochures/patient-journey-guide.pdf", size: "980 KB" },
 ];
 
 export const Route = createFileRoute("/gallery")({
   head: () => ({
     meta: [
-      { title: "Gallery & Events — Swastha NavJeevan" },
-      { name: "description", content: "Moments from the inaugural retreat and upcoming events at Swastha NavJeevan." },
-      { property: "og:title", content: "Gallery & Events — Swastha NavJeevan" },
-      { property: "og:description", content: "The day history was made — and what's coming next." },
-      { property: "og:image", content: heroImg },
-      { property: "og:url", content: "/gallery" },
+      { title: "Gallery & Media — Swastha NavJeevan" },
+      { name: "description", content: "Photos, videos, press coverage, testimonials and downloadable resources from HCHR." },
     ],
-    links: [{ rel: "canonical", href: "/gallery" }],
   }),
   component: Gallery,
 });
 
 function Gallery() {
-  const [active, setActive] = useState<number | null>(null);
-  const close = () => setActive(null);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   return (
     <>
       <PageHero
         eyebrow="Gallery"
-        title="The day history <span class='gold-underline'>was made.</span>"
-        lead="Moments from the inaugural Swastha NavJeevan retreat — and glimpses of the community we are building for every cancer patient."
-        image={img4}
-        imageAlt="Candles held in cupped hands during the inaugural retreat"
+        title="Moments of Healing"
+        lead="Real stories. Real people. Real transformation."
+        image={heroImg}
       />
 
+      {/* Media Gallery */}
       <Section tone="cream">
         <div className="container-wide">
-          <SectionTitle
-            eyebrow="Moments"
-            title="A residential week, in pictures."
-          />
-          <div className="mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-            {photos.map((p, i) => (
-              <button
-                type="button"
-                key={p.title}
-                onClick={() => setActive(i)}
-                className="group relative rounded-xl overflow-hidden aspect-[4/5] focus:outline-none focus:ring-2 focus:ring-[var(--color-gold)]"
-                aria-label={`View ${p.title}`}
+          <SectionTitle eyebrow="Media Gallery" title="From the Inaugural Retreat" />
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {mediaItems.map((item, i) => (
+              <div 
+                key={i}
+                onClick={() => item.type === "photo" && setLightboxIndex(i)}
+                className="group cursor-pointer rounded-2xl overflow-hidden bg-white shadow hover:shadow-xl transition-all"
               >
-                <img src={p.src} alt={p.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="absolute inset-x-0 bottom-0 p-3 text-left text-white translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all">
-                  <div className="display-serif text-sm">{p.title}</div>
+                <div className="relative aspect-video">
+                  <img src={item.src} alt={item.title} className="w-full h-full object-cover" />
+                  {item.type === "video" && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+                      <Play className="w-12 h-12 text-white" />
+                    </div>
+                  )}
                 </div>
-              </button>
+                <div className="p-5">
+                  <div className="text-xs text-teal-600 uppercase tracking-widest">{item.date}</div>
+                  <h3 className="font-semibold mt-2">{item.title}</h3>
+                  <p className="text-sm text-gray-600 mt-1 line-clamp-2">{item.caption}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </Section>
 
+      {/* Press Coverage */}
       <Section tone="white">
         <div className="container-wide">
-          <SectionTitle
-            eyebrow="Upcoming & Past Events"
-            title="Where the programme is going next."
-          />
-          <ol className="mt-10 space-y-3">
-            {events.map((e, i) => (
-              <li key={e.title} className="grid md:grid-cols-[180px_1fr] gap-4 md:gap-8 rounded-2xl bg-[var(--color-cream)] p-5 md:p-6 lift">
-                <div className="flex md:flex-col md:items-start items-baseline gap-3">
-                  <div className="text-[11px] tracking-[0.2em] uppercase text-[var(--color-teal)] font-bold">Milestone 0{i + 1}</div>
-                  <div className="display-serif text-xl text-[var(--color-navy)]">{e.date}</div>
+          <SectionTitle eyebrow="In the News" title="Press Coverage" />
+          <div className="mt-10 space-y-6">
+            {pressCoverage.map((article, i) => (
+              <a href={article.link} key={i} target="_blank" className="block group">
+                <div className="flex items-start gap-6 bg-cream p-6 rounded-2xl hover:bg-amber-50 transition-colors">
+                  <div className="flex-1">
+                    <div className="text-xs text-teal-600">{article.date}</div>
+                    <h3 className="font-semibold text-xl mt-2 group-hover:text-teal-700 transition-colors">{article.title}</h3>
+                    <p className="text-gray-600 mt-2">{article.desc}</p>
+                  </div>
+                  <ExternalLink className="w-5 h-5 text-gray-400 group-hover:text-teal-600 transition-colors" />
                 </div>
-                <div>
-                  <h3 className="display-serif text-xl text-[var(--color-navy)]">{e.title}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground leading-relaxed">{e.desc}</p>
-                </div>
-              </li>
+              </a>
             ))}
-          </ol>
+          </div>
         </div>
       </Section>
 
-      {active !== null && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label={photos[active].title}
-          className="fixed inset-0 z-[3000] bg-black/95 flex items-center justify-center p-4"
-          onClick={close}
-        >
-          <button
-            type="button"
-            onClick={close}
-            aria-label="Close"
-            className="absolute top-6 right-6 text-white/80 hover:text-white p-2"
-          >
-            <X size={26} />
-          </button>
-          <div className="max-w-5xl w-full" onClick={(e) => e.stopPropagation()}>
-            <img src={photos[active].src} alt={photos[active].title} className="w-full max-h-[78vh] object-contain rounded-lg" />
-            <div className="mt-4 text-center text-white">
-              <div className="display-serif text-2xl">{photos[active].title}</div>
-              <div className="text-sm text-white/70 mt-1 max-w-2xl mx-auto">{photos[active].caption}</div>
-              <div className="text-[11px] tracking-[0.2em] uppercase text-white/40 mt-2">
-                {String(active + 1).padStart(2, "0")} / {String(photos.length).padStart(2, "0")}
+      {/* Testimonials */}
+      <Section tone="cream">
+        <div className="container-wide">
+          <SectionTitle eyebrow="Voices of Healing" title="Real Stories from Real Patients" />
+          <div className="mt-10 grid md:grid-cols-2 gap-8">
+            {testimonials.map((t, i) => (
+              <div key={i} className="bg-white border border-gold/10 rounded-3xl p-8">
+                <p className="italic text-lg leading-relaxed">“{t.text}”</p>
+                <div className="mt-6 border-t pt-6">
+                  <div className="font-semibold">{t.name}</div>
+                  <div className="text-sm text-muted-foreground">{t.role}</div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
-      )}
+      </Section>
+
+      {/* Downloadable Resources */}
+      <Section tone="navy">
+        <div className="container-wide">
+          <SectionTitle eyebrow="Resources" title="Downloadable Materials" tone="white" />
+          <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {resources.map((res, i) => (
+              <a
+                key={i}
+                href={res.file}
+                download
+                className="group flex items-center gap-5 bg-white/10 hover:bg-white/15 border border-white/20 rounded-2xl p-6 transition-all"
+              >
+                <div className="bg-white/10 p-4 rounded-xl">
+                  <Download className="w-8 h-8 text-amber-400" />
+                </div>
+                <div className="flex-1">
+                  <div className="font-medium text-white">{res.title}</div>
+                  <div className="text-xs text-white/60">{res.size}</div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </Section>
     </>
   );
 }
