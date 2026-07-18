@@ -22,7 +22,7 @@ function People() {
         eyebrow="Our Community"
         title="Science Meets Wisdom"
         lead="A rare convergence of global oncology credentials and Vedic depth — united by the conviction that healing must be complete."
-        image={sampleAvatar}
+        image={drSuraDas}
       />
 
       {/* ====================== CORE TEAM ====================== */}
@@ -35,12 +35,12 @@ function People() {
           />
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mt-12">
-            <TeamMember image={sampleAvatar} name="Dr. Sura Das" role="Institutional Sponsor" desc="Temple President, ISKCON Navi Mumbai" />
-            <TeamMember image={sampleAvatar} name="Dr. Purushottam Das" role="Principal Research Investigator" desc="Ph.D. Life Sciences — ACTREC-TMC" />
-            <TeamMember image={sampleAvatar} name="Dr. Vaishnavanghri Sevak Das" role="Programme Director" desc="Ph.D. Polymer Chemistry" />
-            <TeamMember image={sampleAvatar} name="Dr. Amogh Gaurang Das" role="Technology & IP Adviser" desc="Ph.D. AI Application" />
-            <TeamMember image={sampleAvatar} name="Dr. Kiran Kalyankar" role="Clinical Ayurvedic Partner" desc="Ayurvedic Oncologist" />
-            <TeamMember image={sampleAvatar} name="Mr. Neeraj Kumar" role="Programme Coordinator" desc="Global IoT School" />
+            <TeamMember image={drSuraDas} name="Dr. Sura Das" role="Institutional Sponsor" desc="Temple President, ISKCON Navi Mumbai" />
+            <TeamMember image={drSuraDas} name="Dr. Purushottam Das" role="Principal Research Investigator" desc="Ph.D. Life Sciences — ACTREC-TMC" />
+            <TeamMember image={drSuraDas} name="Dr. Vaishnavanghri Sevak Das" role="Programme Director" desc="Ph.D. Polymer Chemistry" />
+            <TeamMember image={drSuraDas} name="Dr. Amogh Gaurang Das" role="Technology & IP Adviser" desc="Ph.D. AI Application" />
+            <TeamMember image={drSuraDas} name="Dr. Kiran Kalyankar" role="Clinical Ayurvedic Partner" desc="Ayurvedic Oncologist" />
+            <TeamMember image={drSuraDas} name="Mr. Neeraj Kumar" role="Programme Coordinator" desc="Global IoT School" />
           </div>
         </div>
       </Section>
@@ -55,11 +55,11 @@ function People() {
           />
 
           <div className="grid md:grid-cols-2 gap-8 mt-12">
-            <Collaborator image={sampleAvatar} name="Dr. Amit Joshi" role="Prof. & Head, Medical Oncology" org="ACTREC-TMC" />
-            <Collaborator image={sampleAvatar} name="Dr. Vikram Gota" role="Prof. & In-charge, Integrative Oncology" org="ACTREC-TMC" />
-            <Collaborator image={sampleAvatar} name="Dr. Nandita Saikia" role="Professor, Population Sciences" org="IIPS Mumbai" />
-            <Collaborator image={sampleAvatar} name="Dr. Jyotiranjan Behuria" role="Principal Investigator" org="IKS - Science & Consciousness" />
-            <Collaborator image={sampleAvatar} name="Dr. Avinash Tippani" role="Clinical Collaborator" org="Integrative Oncology" />
+            <Collaborator image={drSuraDas} name="Dr. Amit Joshi" role="Prof. & Head, Medical Oncology" org="ACTREC-TMC" />
+            <Collaborator image={drSuraDas} name="Dr. Vikram Gota" role="Prof. & In-charge, Integrative Oncology" org="ACTREC-TMC" />
+            <Collaborator image={drSuraDas} name="Dr. Nandita Saikia" role="Professor, Population Sciences" org="IIPS Mumbai" />
+            <Collaborator image={drSuraDas} name="Dr. Jyotiranjan Behuria" role="Principal Investigator" org="IKS - Science & Consciousness" />
+            <Collaborator image={drSuraDas} name="Dr. Avinash Tippani" role="Clinical Collaborator" org="Integrative Oncology" />
           </div>
         </div>
       </Section>
@@ -80,7 +80,7 @@ function People() {
           <div className="grid md:grid-cols-2 gap-12 mt-12 items-center">
             <div>
               <img 
-                src={sampleAvatar} 
+                src={drSuraDas} 
                 alt="Shri Ramsheth Thakur with team" 
                 className="rounded-2xl shadow-xl w-full"
               />
