@@ -16,6 +16,7 @@ import { Route as ProgrammeRouteImport } from './routes/programme'
 import { Route as PeopleRouteImport } from './routes/people'
 import { Route as GetInvolvedRouteImport } from './routes/get-involved'
 import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as EvidenceRouteImport } from './routes/evidence'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ChallengeRouteImport } from './routes/challenge'
 import { Route as AboutRouteImport } from './routes/about'
@@ -56,6 +57,11 @@ const GalleryRoute = GalleryRouteImport.update({
   path: '/gallery',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EvidenceRoute = EvidenceRouteImport.update({
+  id: '/evidence',
+  path: '/evidence',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -82,6 +88,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/challenge': typeof ChallengeRoute
   '/contact': typeof ContactRoute
+  '/evidence': typeof EvidenceRoute
   '/gallery': typeof GalleryRoute
   '/get-involved': typeof GetInvolvedRoute
   '/people': typeof PeopleRoute
@@ -95,6 +102,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/challenge': typeof ChallengeRoute
   '/contact': typeof ContactRoute
+  '/evidence': typeof EvidenceRoute
   '/gallery': typeof GalleryRoute
   '/get-involved': typeof GetInvolvedRoute
   '/people': typeof PeopleRoute
@@ -109,6 +117,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/challenge': typeof ChallengeRoute
   '/contact': typeof ContactRoute
+  '/evidence': typeof EvidenceRoute
   '/gallery': typeof GalleryRoute
   '/get-involved': typeof GetInvolvedRoute
   '/people': typeof PeopleRoute
@@ -124,6 +133,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/challenge'
     | '/contact'
+    | '/evidence'
     | '/gallery'
     | '/get-involved'
     | '/people'
@@ -137,6 +147,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/challenge'
     | '/contact'
+    | '/evidence'
     | '/gallery'
     | '/get-involved'
     | '/people'
@@ -150,6 +161,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/challenge'
     | '/contact'
+    | '/evidence'
     | '/gallery'
     | '/get-involved'
     | '/people'
@@ -164,6 +176,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ChallengeRoute: typeof ChallengeRoute
   ContactRoute: typeof ContactRoute
+  EvidenceRoute: typeof EvidenceRoute
   GalleryRoute: typeof GalleryRoute
   GetInvolvedRoute: typeof GetInvolvedRoute
   PeopleRoute: typeof PeopleRoute
@@ -224,6 +237,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GalleryRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/evidence': {
+      id: '/evidence'
+      path: '/evidence'
+      fullPath: '/evidence'
+      preLoaderRoute: typeof EvidenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -260,6 +280,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ChallengeRoute: ChallengeRoute,
   ContactRoute: ContactRoute,
+  EvidenceRoute: EvidenceRoute,
   GalleryRoute: GalleryRoute,
   GetInvolvedRoute: GetInvolvedRoute,
   PeopleRoute: PeopleRoute,
