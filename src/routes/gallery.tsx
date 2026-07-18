@@ -6,7 +6,7 @@ import { X, Download, Play, ExternalLink } from "lucide-react";
 
 // Sample assets
 import heroImg from "@/assets/hero-temple-dawn.jpg";
-import sampleAvatar from "@/assets/people/dr-sura-das.jpg";
+import sampleAvatar from "@/assets/people/giri.png"; // Replace with actual images for media items
 
 const mediaItems = [
   { type: "photo", src: sampleAvatar, title: "Inaugural Lamp Lighting", caption: "Dr. Sura Das lights the lamp at the first HCHR retreat, May 30 2026", date: "30 May 2026" },
