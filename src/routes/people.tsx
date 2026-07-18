@@ -3,7 +3,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { Section, SectionTitle } from "@/components/site/Section";
 
 // Only use the image you confirmed exists
-import sampleAvatar from "@/assets/people/dr-sura-das.jpg";
+import drSuraDas from "@/assets/people/dr-sura-das.JPG";
 
 export const Route = createFileRoute("/people")({
   head: () => ({
